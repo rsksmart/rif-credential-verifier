@@ -1,0 +1,22 @@
+$black-color: #282c34;
+$blue-color: #61dafb;
+$white-color: #ffffff;
+$light-gray: #faf9f9;
+$gray: #919191;
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: $light-gray;
+
+  .footer {
+    text-align: center;
+
+    p {
+      margin: 2px 0;
+      font-size: 12px;
+      color: $gray;
+    }
+  }
+}
+
+@import 'grid';
