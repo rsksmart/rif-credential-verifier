@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.09430767.chunk.css",
+    "main.js": "/static/js/main.d4103bff.chunk.js",
+    "main.js.map": "/static/js/main.d4103bff.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.3a601f64.js",
+    "runtime-main.js.map": "/static/js/runtime-main.3a601f64.js.map",
+    "static/js/2.7923e0eb.chunk.js": "/static/js/2.7923e0eb.chunk.js",
+    "static/js/2.7923e0eb.chunk.js.map": "/static/js/2.7923e0eb.chunk.js.map",
+    "static/js/3.ec1f6c61.chunk.js": "/static/js/3.ec1f6c61.chunk.js",
+    "static/js/3.ec1f6c61.chunk.js.map": "/static/js/3.ec1f6c61.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.09430767.chunk.css.map": "/static/css/main.09430767.chunk.css.map",
+    "static/js/2.7923e0eb.chunk.js.LICENSE.txt": "/static/js/2.7923e0eb.chunk.js.LICENSE.txt",
+    "static/media/powered-by-iov.5db81567.svg": "/static/media/powered-by-iov.5db81567.svg",
+    "static/media/rif-credential-viewer.5cd41cae.svg": "/static/media/rif-credential-viewer.5cd41cae.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3a601f64.js",
+    "static/js/2.7923e0eb.chunk.js",
+    "static/css/main.09430767.chunk.css",
+    "static/js/main.d4103bff.chunk.js"
+  ]
+}
