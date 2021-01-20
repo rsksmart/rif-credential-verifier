@@ -2,6 +2,7 @@
   "name": "rif-id-manager",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://rsksmart.github.io/rif-credential-verifier/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
