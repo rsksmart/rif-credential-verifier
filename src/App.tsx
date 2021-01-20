@@ -14,7 +14,7 @@ function App () {
       </div>
       <div className="container content">
         <div className="column">
-          Content
+          Hello World!
         </div>
       </div>
       <div className="container footer">
