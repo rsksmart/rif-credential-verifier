@@ -8,15 +8,20 @@ describe('App test', () => {
     expect(wrapper).toBeDefined()
   })
 
-  it('loads the SVG image without character issues', () => {
-    const wrapper = shallow(<App />)
-    const image = wrapper.find('img')
-    expect(image.hasClass('App-logo')).toBeTruthy()
-    expect(image.props().src).toBe('logo.svg')
+  describe('header', () => {
+    it('loads the SVG image without character issues', () => {
+      const wrapper = shallow(<App />)
+      const image = wrapper.find('.header').find('img')
+      expect(image.props().alt).toBe('RIF Credential Viewer')
+      expect(image.props().src).toBe('rif-credential-viewer.svg')
+    })
   })
 
-  it('matches anchor text', () => {
-    const wrapper = shallow(<App />)
-    expect(wrapper.find('a').text()).toBe('Learn React')
+  describe('footer', () => {
+    it('has copyright info and image', () => {
+      const wrapper = shallow(<App />)
+      expect(wrapper.find('.footer').find('img').props().alt).toBe('Powered By RIF')
+      expect(wrapper.find('.footer').find('p').at(0).text()).toBe('Copyright © 2021 IOV Labs. All rights reserved.')
+    })
   })
 })
