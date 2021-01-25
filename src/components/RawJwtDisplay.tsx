@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import jwtDecode from 'jwt-decode'
+import { decodeJWT } from 'did-jwt'
 
 interface DecodeDisplayInterface {
   jwt?: string
@@ -13,7 +13,7 @@ const DecodeDisplay: React.FC<DecodeDisplayInterface> = ({ jwt }) => {
   const [json, setJson] = useState<string | null>(null)
 
   useEffect(() => {
-    const decoded = jwtDecode(jwt)
+    const decoded = decodeJWT(jwt)
     setJson(JSON.stringify(decoded, null, 2))
   }, [jwt])
 
