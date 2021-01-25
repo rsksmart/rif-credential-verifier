@@ -35,11 +35,6 @@ const UserInput: React.FC<UserInputInterface> = ({
         {...sharedProps}
         onClick={() => handleDecode(jwtInput, 'cred')}
       >Decode Credential</button>
-
-      <hr />
-
-      <button onClick={() => setJwtInput(samplePresentationJwt)} disabled={true}>set PRESENTATION</button>
-      <button onClick={() => setJwtInput(sampleCredentialJwt)}>set CREDENTIAL</button>
     </div>
   )
 }
