@@ -9,15 +9,14 @@ const providerConfig = {
     { name: 'mainnet', rpcUrl: 'https://mainnet.infura.io/v3/8c2e55bc61b94ad781c4deae786c4f58', registry: '0xdca7ef03e98e0dc2b855be647c39abe984fcf21b' }
   ]
 }
+const resolver = new Resolver(getResolver(providerConfig))
 
 export const handleVerifiablePresentation = (jwt: string) => {
   console.log('presentation check...')
-  const resolver = new Resolver(getResolver(providerConfig))
   return verifyPresentation(jwt, resolver)
 }
 
 export const handleVerifiableCredential = (jwt: string) => {
   console.log('credential check...')
-  const resolver = new Resolver(getResolver(providerConfig))
   return verifyCredential(jwt, resolver)
 }

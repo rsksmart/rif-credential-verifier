@@ -13,12 +13,8 @@ const DecodeDisplay: React.FC<DecodeDisplayInterface> = ({ jwt }) => {
   const [json, setJson] = useState<string | null>(null)
 
   useEffect(() => {
-    try {
-      const decoded = jwtDecode(jwt)
-      setJson(JSON.stringify(decoded, null, 2))
-    } catch (error) {
-
-    }
+    const decoded = jwtDecode(jwt)
+    setJson(JSON.stringify(decoded, null, 2))
   }, [jwt])
 
   return (

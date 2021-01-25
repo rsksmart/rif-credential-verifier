@@ -3,7 +3,7 @@ import { appStatus } from '../state'
 
 interface UserInputInterface {
   status: appStatus
-  handleDecode: (jwt: string, type: string) => void
+  handleDecode: (jwt: string, type: string) => any // @todo type
 }
 
 const UserInput: React.FC<UserInputInterface> = ({

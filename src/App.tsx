@@ -16,12 +16,19 @@ function App () {
 
   const decode = (jwt: string, type: string) => {
     setAppState({ ...initialState, status: appStatus.LOADING })
-    console.log('here', appState)
 
-    // type === 'cred' ? handleVerifiableCredential(jwt) : handleVerifiablePresentation(jwt)
-    handleVerifiableCredential(jwt)
-      .then((response: any) => setAppState({ jwt, message: response, status: appStatus.DECODED }))
-      .catch((err: Error) => setAppState({ ...appState, message: err.message, status: appStatus.ERROR }))
+    const catchError = (err: Error) => setAppState({ ...initialState, message: err.message, status: appStatus.ERROR })
+
+    type === 'cred'
+      ? handleVerifiableCredential(jwt)
+        .then((credential: any) =>
+          setAppState({ ...appState, jwt, credential, status: appStatus.DECODED }))
+        .catch(catchError)
+      : handleVerifiablePresentation(jwt)
+        .then((presentation: any) =>
+        // setAppState({ ...appState, status: appStatus.DECODED }))
+          console.log('@todo', presentation))
+        .catch(catchError)
   }
 
   return (

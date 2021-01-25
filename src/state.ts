@@ -1,3 +1,5 @@
+import { JwtCredentialPayload } from 'did-jwt-vc'
+
 /* eslint-disable no-unused-vars */
 export enum appStatus {
   START = 'START',
@@ -7,9 +9,15 @@ export enum appStatus {
 }
 
 export interface appStateInterface {
-  jwt?: string
   status: appStatus
   message: string
+  jwt?: string
+  credential?: JwtCredentialPayload,
 }
 
-export const initialState = { status: appStatus.START, message: '' }
+export const initialState = {
+  status: appStatus.START,
+  message: '',
+  jwt: undefined,
+  credential: undefined
+}
