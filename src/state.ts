@@ -7,6 +7,7 @@ export enum appStatus {
 }
 
 export interface appStateInterface {
+  jwt?: string
   status: appStatus
   message: string
 }

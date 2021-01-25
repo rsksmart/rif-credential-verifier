@@ -7,22 +7,21 @@ import { version } from '../package.json'
 import { appStatus, appStateInterface, initialState } from './state'
 import UserInput from './components/UserInput'
 import ErrorComponent from './components/ErrorComponent'
-import DecodeDisplay from './components/DecodeDisplay'
-import jwtDecode from 'jwt-decode'
+import DecodeDisplay from './components/RawJwtDisplay'
+import { handleVerifiableCredential, handleVerifiablePresentation } from './operations'
+import LoadingComponent from './components/LoadingComponent'
 
 function App () {
-  const [state, setState] = useState<appStateInterface>(initialState)
+  const [appState, setAppState] = useState<appStateInterface>(initialState)
 
-  const decode = (jwt: string) => {
-    setState({ message: '', status: appStatus.LOADING })
+  const decode = (jwt: string, type: string) => {
+    setAppState({ ...initialState, status: appStatus.LOADING })
+    console.log('here', appState)
 
-    try {
-      const decoded = jwtDecode(jwt)
-      const stringify = JSON.stringify(decoded)
-      setState({ message: stringify, status: appStatus.DECODED })
-    } catch (err: any) {
-      setState({ message: `Could not decode JWT: ${err.message}`, status: appStatus.ERROR })
-    }
+    // type === 'cred' ? handleVerifiableCredential(jwt) : handleVerifiablePresentation(jwt)
+    handleVerifiableCredential(jwt)
+      .then((response: any) => setAppState({ jwt, message: response, status: appStatus.DECODED }))
+      .catch((err: Error) => setAppState({ ...appState, message: err.message, status: appStatus.ERROR }))
   }
 
   return (
@@ -33,16 +32,17 @@ function App () {
         </div>
       </div>
 
-      <ErrorComponent status={state.status} message={state.message} />
+      <ErrorComponent status={appState.status} message={appState.message} />
+      <LoadingComponent status={appState.status} />
 
       <div className="container content">
-        <div className="column">
-          <h2>Credential JWT</h2>
-          <UserInput status={state.status} handleDecode={decode} />
+        <div className="column column-6">
+          <h2>Raw JWT</h2>
+          <UserInput status={appState.status} handleDecode={decode} />
         </div>
-        <div className="column">
+        <div className="column column-6">
           <h2>Decoded</h2>
-          <DecodeDisplay status={state.status} jwt={state.message} />
+          <DecodeDisplay jwt={appState.jwt} />
         </div>
       </div>
 
