@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/rif-credential-verifier/static/css/main.09430767.chunk.css",
-    "main.js": "/rif-credential-verifier/static/js/main.4d8db05a.chunk.js",
-    "main.js.map": "/rif-credential-verifier/static/js/main.4d8db05a.chunk.js.map",
-    "runtime-main.js": "/rif-credential-verifier/static/js/runtime-main.65f805aa.js",
-    "runtime-main.js.map": "/rif-credential-verifier/static/js/runtime-main.65f805aa.js.map",
-    "static/js/2.7923e0eb.chunk.js": "/rif-credential-verifier/static/js/2.7923e0eb.chunk.js",
-    "static/js/2.7923e0eb.chunk.js.map": "/rif-credential-verifier/static/js/2.7923e0eb.chunk.js.map",
-    "static/js/3.ec1f6c61.chunk.js": "/rif-credential-verifier/static/js/3.ec1f6c61.chunk.js",
-    "static/js/3.ec1f6c61.chunk.js.map": "/rif-credential-verifier/static/js/3.ec1f6c61.chunk.js.map",
+    "main.css": "/rif-credential-verifier/static/css/main.404e31b5.chunk.css",
+    "main.js": "/rif-credential-verifier/static/js/main.39a385af.chunk.js",
+    "main.js.map": "/rif-credential-verifier/static/js/main.39a385af.chunk.js.map",
+    "runtime-main.js": "/rif-credential-verifier/static/js/runtime-main.689c0bd4.js",
+    "runtime-main.js.map": "/rif-credential-verifier/static/js/runtime-main.689c0bd4.js.map",
+    "static/js/2.2f156f5f.chunk.js": "/rif-credential-verifier/static/js/2.2f156f5f.chunk.js",
+    "static/js/2.2f156f5f.chunk.js.map": "/rif-credential-verifier/static/js/2.2f156f5f.chunk.js.map",
+    "static/js/3.e52cfb76.chunk.js": "/rif-credential-verifier/static/js/3.e52cfb76.chunk.js",
+    "static/js/3.e52cfb76.chunk.js.map": "/rif-credential-verifier/static/js/3.e52cfb76.chunk.js.map",
     "index.html": "/rif-credential-verifier/index.html",
-    "static/css/main.09430767.chunk.css.map": "/rif-credential-verifier/static/css/main.09430767.chunk.css.map",
-    "static/js/2.7923e0eb.chunk.js.LICENSE.txt": "/rif-credential-verifier/static/js/2.7923e0eb.chunk.js.LICENSE.txt",
+    "static/css/main.404e31b5.chunk.css.map": "/rif-credential-verifier/static/css/main.404e31b5.chunk.css.map",
+    "static/js/2.2f156f5f.chunk.js.LICENSE.txt": "/rif-credential-verifier/static/js/2.2f156f5f.chunk.js.LICENSE.txt",
     "static/media/powered-by-iov.5db81567.svg": "/rif-credential-verifier/static/media/powered-by-iov.5db81567.svg",
     "static/media/rif-credential-viewer.5cd41cae.svg": "/rif-credential-verifier/static/media/rif-credential-viewer.5cd41cae.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.65f805aa.js",
-    "static/js/2.7923e0eb.chunk.js",
-    "static/css/main.09430767.chunk.css",
-    "static/js/main.4d8db05a.chunk.js"
+    "static/js/runtime-main.689c0bd4.js",
+    "static/js/2.2f156f5f.chunk.js",
+    "static/css/main.404e31b5.chunk.css",
+    "static/js/main.39a385af.chunk.js"
   ]
 }
