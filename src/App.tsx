@@ -3,32 +3,46 @@ import rifCredentialViewerLogo from './assets/images/rif-credential-viewer.svg'
 import poweredByRif from './assets/images/powered-by-iov.svg'
 import './assets/scss/_index.scss'
 import { version } from '../package.json'
-
 import { appStatus, appStateInterface, initialState } from './state'
 import UserInput from './components/UserInput'
 import ErrorComponent from './components/ErrorComponent'
 import DecodeDisplay from './components/RawJwtDisplay'
-import { handleVerifiableCredential, handleVerifiablePresentation } from './operations'
+import { handleVerifiableCredential } from './operations'
 import LoadingComponent from './components/LoadingComponent'
 
 function App () {
   const [appState, setAppState] = useState<appStateInterface>(initialState)
 
-  const decode = (jwt: string, type: string) => {
+  const decode = (jwt: string) => {
     setAppState({ ...initialState, status: appStatus.LOADING })
 
-    const catchError = (err: Error) => setAppState({ ...initialState, message: err.message, status: appStatus.ERROR })
+    const catchError = (err: Error) => {
+      console.log('error!', err)
+      setAppState({ ...initialState, message: err.message, status: appStatus.ERROR })
+    }
 
+    handleVerifiableCredential(jwt)
+      .then((credential: any) => {
+        console.log(credential)
+        // setAppState({ ...appState, jwt, credential, status: appStatus.DECODED })
+      })
+      .catch(catchError)
+
+    // return null // verifyJwtThing(jwt)
+    /*
     type === 'cred'
       ? handleVerifiableCredential(jwt)
-        .then((credential: any) =>
-          setAppState({ ...appState, jwt, credential, status: appStatus.DECODED }))
+        .then((credential: any) => {
+          console.log(credential)
+          setAppState({ ...appState, jwt, credential, status: appStatus.DECODED })
+        })
         .catch(catchError)
       : handleVerifiablePresentation(jwt)
         .then((presentation: any) =>
         // setAppState({ ...appState, status: appStatus.DECODED }))
           console.log('@todo', presentation))
         .catch(catchError)
+        */
   }
 
   return (
