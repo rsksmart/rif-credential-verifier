@@ -1,7 +1,6 @@
 import { Resolver } from 'did-resolver'
 import { getResolver } from 'ethr-did-resolver'
-import { verifyPresentation, verifyCredential } from 'did-jwt-vc'
-// import { verifyJWT } from 'jesse-did-jwt'
+import { verifyJWT } from 'jesse-did-jwt'
 
 const providerConfig = {
   networks: [
@@ -12,25 +11,7 @@ const providerConfig = {
 }
 const resolver = new Resolver(getResolver(providerConfig))
 
-export const handleVerifiablePresentation = (jwt: string) => {
-  console.log('presentation check...')
-  return verifyPresentation(jwt, resolver)
+export const verifyVerifiableJwt = (jwt: string) => {
+  // @ts-expect-error: resolver is incorrect type from did-jwt
+  return verifyJWT(jwt, { ethSign: true, resolver })
 }
-
-export const handleVerifiableCredential = (jwt: string) => {
-  console.log('credential check...')
-  console.log(resolver)
-  return verifyCredential(jwt, resolver)
-}
-
-/*
-export const handleVerifiableJwt = (jwt: string) => {
-  // return Promise.resolve('hello')
-  console.log('trying...', jwt)
-  // const localResolver = new Resolver()
-  // localResolver.resolve('https://did.testnet.rsk.co:4444')
-  return verifyJWT(jwt, { ethSign: true, resolver: resolver })
-    .then((verifiedResponse: any) => console.log('success!', verifiedResponse))
-    .catch((error: Error) => console.log('Error', error.message))
-}
-*/

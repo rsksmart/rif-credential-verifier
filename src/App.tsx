@@ -6,8 +6,7 @@ import { version } from '../package.json'
 import { appStatus, appStateInterface, initialState } from './state'
 import UserInput from './components/UserInput'
 import ErrorComponent from './components/ErrorComponent'
-import DecodeDisplay from './components/RawJwtDisplay'
-import { handleVerifiableCredential } from './operations'
+import { verifyVerifiableJwt } from './operations'
 import LoadingComponent from './components/LoadingComponent'
 
 function App () {
@@ -16,33 +15,12 @@ function App () {
   const decode = (jwt: string) => {
     setAppState({ ...initialState, status: appStatus.LOADING })
 
-    const catchError = (err: Error) => {
-      console.log('error!', err)
-      setAppState({ ...initialState, message: err.message, status: appStatus.ERROR })
-    }
-
-    handleVerifiableCredential(jwt)
+    verifyVerifiableJwt(jwt)
       .then((credential: any) => {
         console.log(credential)
-        // setAppState({ ...appState, jwt, credential, status: appStatus.DECODED })
+        setAppState({ ...appState, jwt, credential, status: appStatus.DECODED })
       })
-      .catch(catchError)
-
-    // return null // verifyJwtThing(jwt)
-    /*
-    type === 'cred'
-      ? handleVerifiableCredential(jwt)
-        .then((credential: any) => {
-          console.log(credential)
-          setAppState({ ...appState, jwt, credential, status: appStatus.DECODED })
-        })
-        .catch(catchError)
-      : handleVerifiablePresentation(jwt)
-        .then((presentation: any) =>
-        // setAppState({ ...appState, status: appStatus.DECODED }))
-          console.log('@todo', presentation))
-        .catch(catchError)
-        */
+      .catch((err: Error) => setAppState({ ...initialState, message: err.message, status: appStatus.ERROR }))
   }
 
   return (
@@ -63,7 +41,6 @@ function App () {
         </div>
         <div className="column column-6">
           <h2>Decoded</h2>
-          <DecodeDisplay jwt={appState.jwt} />
         </div>
       </div>
 
