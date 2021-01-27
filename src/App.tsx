@@ -16,11 +16,9 @@ function App () {
   const decode = (jwt: string) => {
     setAppState({ ...initialState, status: appStatus.LOADING })
 
-    verifyVerifiableJwt(jwt)
-      .then((credential: any) => {
-        console.log(credential)
-        setAppState({ ...appState, jwt, credential, status: appStatus.DECODED })
-      })
+    verifyVerifiableJwt(jwt, true)
+      .then((credential: any) =>
+        setAppState({ ...appState, jwt, credential, status: appStatus.DECODED }))
       .catch((err: Error) => setAppState({ ...initialState, message: err.message, status: appStatus.ERROR }))
   }
 
@@ -32,9 +30,6 @@ function App () {
         </div>
       </div>
 
-      {appState.status === appStatus.ERROR && <ErrorComponent message={appState.message} />}
-      {appState.status === appStatus.LOADING && <LoadingComponent />}
-
       <div className="container content">
         <div className="column column-6">
           <h2>Raw JWT</h2>
@@ -43,6 +38,8 @@ function App () {
         <div className="column column-6">
           <h2>Decoded</h2>
           {appState.credential && appState.credential.payload.vp && <PresentationDisplay presentation={appState.credential} />}
+          {appState.status === appStatus.ERROR && <ErrorComponent message={appState.message} />}
+          {appState.status === appStatus.LOADING && <LoadingComponent />}
         </div>
       </div>
 

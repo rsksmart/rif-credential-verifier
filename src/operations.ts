@@ -9,11 +9,12 @@ const providerConfig = {
     { name: 'mainnet', rpcUrl: 'https://mainnet.infura.io/v3/8c2e55bc61b94ad781c4deae786c4f58', registry: '0xdca7ef03e98e0dc2b855be647c39abe984fcf21b' }
   ]
 }
+
 const resolver = new Resolver(getResolver(providerConfig))
 
-export const verifyVerifiableJwt = (jwt: string) => {
+export const verifyVerifiableJwt = (jwt: string, ethSign: boolean) => {
   // @ts-expect-error: resolver is incorrect type from did-jwt
-  return verifyJWT(jwt, { ethSign: true, resolver })
+  return verifyJWT(jwt, { ethSign, resolver })
 }
 
 export const decode = (jwt: string) => {
