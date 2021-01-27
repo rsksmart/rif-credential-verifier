@@ -2,7 +2,7 @@ import { JWTDecoded } from 'jesse-did-jwt/lib/JWT'
 import React, { useState, useEffect } from 'react'
 import { decode } from '../operations'
 import LoadingComponent from './LoadingComponent'
-import { FormatDates, FormatDateTimeItem, FormatMetaData } from './MetaDataHelpers'
+import { FormatDates, FormatMetaData } from './MetaDataHelpers'
 
 interface CredentialDisplayInterface {
   jwt: string

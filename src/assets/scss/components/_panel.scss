@@ -8,15 +8,24 @@
     margin-top: 0;
   }
 
+  h4 {
+    color: $gray;
+  }
+
   p {
     margin: 5px 0;
   }
+
   .container {
     border-bottom: 1px solid #f1f1f1;
   }
 
+  .container.invalid {
+    color: red;
+  }
+
   div.label {
-    font-weight: bold;
+    font-weight: 500 !important;
     color: $gray;
   }
 
