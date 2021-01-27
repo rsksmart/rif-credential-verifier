@@ -9,6 +9,7 @@ import ErrorComponent from './components/ErrorComponent'
 import { verifyVerifiableJwt } from './operations'
 import LoadingComponent from './components/LoadingComponent'
 import PresentationDisplay from './components/PresentationDisplay'
+import { INVALID_SIGNATURE } from './constants'
 
 function App () {
   const [appState, setAppState] = useState<appStateInterface>(initialState)
@@ -19,7 +20,10 @@ function App () {
     verifyVerifiableJwt(jwt, useEthSign)
       .then((credential: any) =>
         setAppState({ ...appState, jwt, credential, status: appStatus.DECODED }))
-      .catch((err: Error) => setAppState({ ...initialState, message: err.message, status: appStatus.ERROR }))
+      .catch((err: Error) => {
+        const errorMessage = err.message === INVALID_SIGNATURE ? `${err.message}, try toggling 'Use ethSign'.` : err.message
+        setAppState({ ...initialState, message: errorMessage, status: appStatus.ERROR })
+      })
   }
 
   return (
@@ -38,7 +42,11 @@ function App () {
         <div className="column column-6">
           <h2>Decoded</h2>
           {appState.credential && appState.credential.payload.vp && <PresentationDisplay presentation={appState.credential} />}
-          {appState.status === appStatus.ERROR && <ErrorComponent message={appState.message} />}
+          {appState.status === appStatus.ERROR && (
+            <div className="panel">
+              <ErrorComponent message={appState.message} />
+            </div>
+          )}
           {appState.status === appStatus.LOADING && <LoadingComponent />}
         </div>
       </div>
