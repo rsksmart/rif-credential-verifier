@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import rifCredentialViewerLogo from './assets/images/rif-credential-viewer.svg'
 import poweredByRif from './assets/images/powered-by-iov.svg'
 import './assets/scss/_index.scss'
@@ -28,6 +28,13 @@ function App () {
       })
   }
 
+  const initialJwt = window.location.search.replace('?jwt=', '')
+  useEffect(() => {
+    if (window.location.search.startsWith('?jwt=')) {
+      decode(initialJwt, true)
+    }
+  }, [window.location.search])
+
   return (
     <div className="App">
       <div className="container header">
@@ -39,7 +46,11 @@ function App () {
       <div className="container content">
         <div className="column column-6">
           <h2>Raw JWT</h2>
-          <UserInput disabled={appState.status === appStatus.LOADING} handleDecode={decode} />
+          <UserInput
+            disabled={appState.status === appStatus.LOADING}
+            handleDecode={decode}
+            initialText={initialJwt}
+          />
         </div>
         <div className="column column-6">
           <h2>Decoded</h2>

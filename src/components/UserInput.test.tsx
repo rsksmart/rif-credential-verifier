@@ -27,4 +27,9 @@ describe('Component: UserInput', () => {
     wrapper.find('.submit').simulate('click')
     expect(handleDecode).toBeCalledWith('value', false)
   })
+
+  it('sets the initial text', () => {
+    const wrapper = mount(<UserInput {...sharedProps} initialText="hello" />)
+    expect(wrapper.find('.userInput').props().value).toBe('hello')
+  })
 })
