@@ -17,8 +17,11 @@ body {
       color: $gray;
     }
   }
+
+  .breakAll { word-wrap: break-word;}
 }
 
 @import 'grid';
 @import 'userInputs';
 @import 'components/rawJwtDisplay';
+@import 'components/panel';

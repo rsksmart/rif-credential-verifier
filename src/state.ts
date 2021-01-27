@@ -1,4 +1,4 @@
-import { JwtCredentialPayload } from 'did-jwt-vc'
+import { JWTVerified } from 'jesse-did-jwt'
 
 /* eslint-disable no-unused-vars */
 export enum appStatus {
@@ -12,7 +12,7 @@ export interface appStateInterface {
   status: appStatus
   message: string
   jwt?: string
-  credential?: JwtCredentialPayload,
+  credential?: JWTVerified,
 }
 
 export const initialState = {

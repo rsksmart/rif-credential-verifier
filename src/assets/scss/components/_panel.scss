@@ -1,0 +1,39 @@
+.panel {
+  padding: 10px;
+  border: 2px solid $blue-color;
+  border-radius: 10px;
+
+  h3 {
+    color: $gray;
+    margin-top: 0;
+  }
+
+  h4 {
+    color: $gray;
+  }
+
+  p {
+    margin: 5px 0;
+  }
+
+  .container {
+    border-bottom: 1px solid #f1f1f1;
+  }
+
+  .container.invalid {
+    color: red;
+  }
+
+  div.label {
+    font-weight: 500 !important;
+    color: $gray;
+  }
+
+  .panel {
+    margin-top: 25px;
+  }
+  
+  .did {
+    word-wrap: break-word;
+  }
+}

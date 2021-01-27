@@ -6,43 +6,24 @@ import { version } from '../package.json'
 import { appStatus, appStateInterface, initialState } from './state'
 import UserInput from './components/UserInput'
 import ErrorComponent from './components/ErrorComponent'
-import DecodeDisplay from './components/RawJwtDisplay'
-import { handleVerifiableCredential } from './operations'
+import { verifyVerifiableJwt } from './operations'
 import LoadingComponent from './components/LoadingComponent'
+import PresentationDisplay from './components/PresentationDisplay'
+import { INVALID_SIGNATURE } from './constants'
 
 function App () {
   const [appState, setAppState] = useState<appStateInterface>(initialState)
 
-  const decode = (jwt: string) => {
+  const decode = (jwt: string, useEthSign: boolean) => {
     setAppState({ ...initialState, status: appStatus.LOADING })
 
-    const catchError = (err: Error) => {
-      console.log('error!', err)
-      setAppState({ ...initialState, message: err.message, status: appStatus.ERROR })
-    }
-
-    handleVerifiableCredential(jwt)
-      .then((credential: any) => {
-        console.log(credential)
-        // setAppState({ ...appState, jwt, credential, status: appStatus.DECODED })
+    verifyVerifiableJwt(jwt, useEthSign)
+      .then((credential: any) =>
+        setAppState({ ...appState, jwt, credential, status: appStatus.DECODED }))
+      .catch((err: Error) => {
+        const errorMessage = err.message === INVALID_SIGNATURE ? `${err.message}, try toggling 'Use ethSign'.` : err.message
+        setAppState({ ...initialState, message: errorMessage, status: appStatus.ERROR })
       })
-      .catch(catchError)
-
-    // return null // verifyJwtThing(jwt)
-    /*
-    type === 'cred'
-      ? handleVerifiableCredential(jwt)
-        .then((credential: any) => {
-          console.log(credential)
-          setAppState({ ...appState, jwt, credential, status: appStatus.DECODED })
-        })
-        .catch(catchError)
-      : handleVerifiablePresentation(jwt)
-        .then((presentation: any) =>
-        // setAppState({ ...appState, status: appStatus.DECODED }))
-          console.log('@todo', presentation))
-        .catch(catchError)
-        */
   }
 
   return (
@@ -53,17 +34,20 @@ function App () {
         </div>
       </div>
 
-      <ErrorComponent status={appState.status} message={appState.message} />
-      <LoadingComponent status={appState.status} />
-
       <div className="container content">
         <div className="column column-6">
           <h2>Raw JWT</h2>
-          <UserInput status={appState.status} handleDecode={decode} />
+          <UserInput disabled={appState.status === appStatus.LOADING} handleDecode={decode} />
         </div>
         <div className="column column-6">
           <h2>Decoded</h2>
-          <DecodeDisplay jwt={appState.jwt} />
+          {appState.credential && appState.credential.payload.vp && <PresentationDisplay presentation={appState.credential} />}
+          {appState.status === appStatus.ERROR && (
+            <div className="panel">
+              <ErrorComponent message={appState.message} />
+            </div>
+          )}
+          {appState.status === appStatus.LOADING && <LoadingComponent />}
         </div>
       </div>
 
