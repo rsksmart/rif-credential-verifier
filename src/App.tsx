@@ -53,8 +53,8 @@ function App () {
         </div>
       </div>
 
-      <ErrorComponent status={appState.status} message={appState.message} />
-      <LoadingComponent status={appState.status} />
+      {appState.status === appStatus.ERROR && <ErrorComponent message={appState.message} />}
+      {appState.status === appStatus.LOADING && <LoadingComponent />}
 
       <div className="container content">
         <div className="column column-6">

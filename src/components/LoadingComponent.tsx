@@ -1,13 +1,8 @@
 import React from 'react'
-import { appStatus } from '../state'
 
-interface LoadingComponentInterface {
-  status: appStatus
-}
+interface LoadingComponentInterface {}
 
-const LoadingComponent: React.FC<LoadingComponentInterface> = ({ status }) =>
-  status === appStatus.LOADING
-    ? <div style={{ textAlign: 'center' }}>LOADING</div>
-    : <></>
+const LoadingComponent: React.FC<LoadingComponentInterface> = () =>
+  <div style={{ textAlign: 'center' }}>LOADING</div>
 
 export default LoadingComponent

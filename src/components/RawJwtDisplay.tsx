@@ -1,22 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { decodeJWT } from 'did-jwt'
+import React from 'react'
 
 interface DecodeDisplayInterface {
-  jwt?: string
+  json: string
 }
 
-const DecodeDisplay: React.FC<DecodeDisplayInterface> = ({ jwt }) => {
-  if (!jwt) {
-    return <></>
-  }
-
-  const [json, setJson] = useState<string | null>(null)
-
-  useEffect(() => {
-    const decoded = decodeJWT(jwt)
-    setJson(JSON.stringify(decoded, null, 2))
-  }, [jwt])
-
+const DecodeDisplay: React.FC<DecodeDisplayInterface> = ({ json }) => {
   return (
     <div>
       <h3>Raw Decoded</h3>
