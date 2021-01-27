@@ -1,0 +1,18 @@
+.panel {
+  padding: 10px;
+  border: 2px solid $blue-color;
+  border-radius: 10px;
+
+  h3 {
+    color: $gray;
+  }
+
+  .container {
+    margin-bottom: 10px;
+  }
+
+  div.label {
+    font-weight: bold;
+    color: $gray;
+  }
+}

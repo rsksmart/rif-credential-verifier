@@ -8,6 +8,7 @@ import UserInput from './components/UserInput'
 import ErrorComponent from './components/ErrorComponent'
 import { verifyVerifiableJwt } from './operations'
 import LoadingComponent from './components/LoadingComponent'
+import PresentationDisplay from './components/PresentationDisplay'
 
 function App () {
   const [appState, setAppState] = useState<appStateInterface>(initialState)
@@ -41,6 +42,7 @@ function App () {
         </div>
         <div className="column column-6">
           <h2>Decoded</h2>
+          {appState.credential && appState.credential.payload.vp && <PresentationDisplay presentation={appState.credential} />}
         </div>
       </div>
 
