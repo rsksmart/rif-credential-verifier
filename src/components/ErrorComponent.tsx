@@ -5,11 +5,7 @@ interface ErrorComponentInterface {
 }
 
 const ErrorComponent: React.FC<ErrorComponentInterface> = ({ message }) => (
-  <div className="container">
-    <div className="column">
-      <p className="alert">{message}</p>
-    </div>
-  </div>
+  <p className="alert">{message}</p>
 )
 
 export default ErrorComponent
