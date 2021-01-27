@@ -12,9 +12,19 @@ describe('Component: UserInput', () => {
   it('returns the input the user typed', () => {
     const handleDecode = jest.fn()
     const wrapper = mount(<UserInput {...sharedProps} handleDecode={handleDecode} />)
-    wrapper.find('.userInput').simulate('change', { target: { value: 'myJWT' } })
+    wrapper.find('.userInput').simulate('change', { target: { value: 'value' } })
     wrapper.find('.submit').simulate('click')
 
-    expect(handleDecode).toBeCalledWith('myJWT', true)
+    expect(handleDecode).toBeCalledWith('value', true)
+  })
+
+  it('sends useEth as false', () => {
+    const handleDecode = jest.fn()
+    const wrapper = mount(<UserInput {...sharedProps} handleDecode={handleDecode} />)
+    wrapper.find('.userInput').simulate('change', { target: { value: 'value' } })
+    wrapper.find('.ethSignCheck').simulate('change', { target: { checked: false } })
+
+    wrapper.find('.submit').simulate('click')
+    expect(handleDecode).toBeCalledWith('value', false)
   })
 })
