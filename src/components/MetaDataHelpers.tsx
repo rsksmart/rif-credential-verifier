@@ -34,7 +34,7 @@ export const FormatDateTimeItem:React.FC<FormatDateTimeI> = ({ label, value, val
  */
 export const FormatMetaData:React.FC<{ label: string; value?: string; className?: string }> = ({ label, value, className }) =>
   value ? (
-    <div className={`container ${className && className}`}>
+    <div className={className ? `container ${className}` : 'container'}>
       <div className="column-3 label"><p>{label}</p></div>
       <div className="column-9 value"><p>{value}</p></div>
     </div>
