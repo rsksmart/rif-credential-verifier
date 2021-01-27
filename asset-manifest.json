@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/rif-credential-verifier/static/css/main.8365d28c.chunk.css",
-    "main.js": "/rif-credential-verifier/static/js/main.4b345f53.chunk.js",
-    "main.js.map": "/rif-credential-verifier/static/js/main.4b345f53.chunk.js.map",
+    "main.js": "/rif-credential-verifier/static/js/main.fccea1fd.chunk.js",
+    "main.js.map": "/rif-credential-verifier/static/js/main.fccea1fd.chunk.js.map",
     "runtime-main.js": "/rif-credential-verifier/static/js/runtime-main.5af4a650.js",
     "runtime-main.js.map": "/rif-credential-verifier/static/js/runtime-main.5af4a650.js.map",
     "static/js/2.0b9cb222.chunk.js": "/rif-credential-verifier/static/js/2.0b9cb222.chunk.js",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.5af4a650.js",
     "static/js/2.0b9cb222.chunk.js",
     "static/css/main.8365d28c.chunk.css",
-    "static/js/main.4b345f53.chunk.js"
+    "static/js/main.fccea1fd.chunk.js"
   ]
 }
