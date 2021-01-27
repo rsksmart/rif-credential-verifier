@@ -1,9 +1,9 @@
 <p align="middle">
   <img src="https://www.rifos.org/assets/img/logo.svg" alt="logo" height="100" >
 </p>
-<h3 align="middle"><code>rif-credential-viewer</code></h3>
+<h3 align="middle"><code>rif-credential-verifier</code></h3>
 <p align="middle">
-  View verifiable credentials and presentations
+  Verifier credentials and presentations
 </p>
 <p align="middle">
   <a href="https://circleci.com/gh/rsksmart/rif-credential-verifier">
@@ -17,7 +17,21 @@
   </a>
 </p>
 
-## Available Scripts
+## Usage
+
+The RIF Credential Verifier can verify and decode JWT presentations and credentials. This site can be used with the [RIF Identity Manager](https://rsksmart.github.io/rif-identity-manager/) to verify credential presentations.
+
+To test it yourself, get an email credential from the [RIF Email VC Issuer](https://rsksmart.github.io/email-vc-issuer/). After verfying your email address, the issuer will ask you to save it in your datavault. Next, navigate to the [RIF Identity Manager](https://rsksmart.github.io/rif-identity-manager) and log in. Navigate to DataVault and scroll down to Credentials. Click 'download' and then 'present' to get a presentation JWT.
+
+Don't want your own credential? Use one of the [sample credentials](https://github.com/rsksmart/rif-credential-verifier/blob/develop/docs/samples.md).
+
+### ethSign
+
+The verifier supports credentials and presentations signed with ethSign, i.e. a wallet such as metamask. The default is the presentation is signed with ethSign and the credentials are not. However, the user can change these defaults when they decode.
+
+## Run Locally
+
+Setup for this project is fairly simple.
 
 ### `yarn`
 
@@ -31,9 +45,6 @@ In the project directory, you can run:
 
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.
-You will also see any lint errors in the console.
 
 ### `yarn test`
 
