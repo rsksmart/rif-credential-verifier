@@ -28,9 +28,9 @@ function App () {
       })
   }
 
-  const initialJwt = window.location.search.replace('?jwt=', '')
+  const initialJwt = window.location.search.startsWith('?jwt=') ? window.location.search.replace('?jwt=', '') : ''
   useEffect(() => {
-    if (window.location.search.startsWith('?jwt=')) {
+    if (initialJwt !== '') {
       decode(initialJwt, true)
     }
   }, [window.location.search])
