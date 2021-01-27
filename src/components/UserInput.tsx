@@ -28,7 +28,7 @@ const UserInput: React.FC<UserInputInterface> = ({
       </label></p>
       <button
         {...sharedProps}
-        onClick={() => handleDecode(jwtInput, useEthSign)}
+        onClick={() => handleDecode(jwtInput.trim().replace(/\n/g, ' '), useEthSign)}
         className="submit"
       >Decode Presentation</button>
     </div>
