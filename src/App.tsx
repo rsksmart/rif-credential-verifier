@@ -10,6 +10,8 @@ import { verifyVerifiableJwt } from './operations'
 import LoadingComponent from './components/LoadingComponent'
 import PresentationDisplay from './components/PresentationDisplay'
 import { INVALID_SIGNATURE } from './constants'
+import CredentialDisplay from './components/CredentialDisplay'
+import { JWTVerified } from 'jesse-did-jwt'
 
 function App () {
   const [appState, setAppState] = useState<appStateInterface>(initialState)
@@ -18,7 +20,7 @@ function App () {
     setAppState({ ...initialState, status: appStatus.LOADING })
 
     verifyVerifiableJwt(jwt, useEthSign)
-      .then((credential: any) =>
+      .then((credential: JWTVerified) =>
         setAppState({ ...appState, jwt, credential, status: appStatus.DECODED }))
       .catch((err: Error) => {
         const errorMessage = err.message === INVALID_SIGNATURE ? `${err.message}, try toggling 'Use ethSign'.` : err.message
@@ -42,6 +44,7 @@ function App () {
         <div className="column column-6">
           <h2>Decoded</h2>
           {appState.credential && appState.credential.payload.vp && <PresentationDisplay presentation={appState.credential} />}
+          {appState.credential && appState.credential.payload.vc && <CredentialDisplay credential={appState.credential} />}
           {appState.status === appStatus.ERROR && (
             <div className="panel">
               <ErrorComponent message={appState.message} />
