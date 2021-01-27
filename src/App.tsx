@@ -13,10 +13,10 @@ import PresentationDisplay from './components/PresentationDisplay'
 function App () {
   const [appState, setAppState] = useState<appStateInterface>(initialState)
 
-  const decode = (jwt: string) => {
+  const decode = (jwt: string, useEthSign: boolean) => {
     setAppState({ ...initialState, status: appStatus.LOADING })
 
-    verifyVerifiableJwt(jwt, true)
+    verifyVerifiableJwt(jwt, useEthSign)
       .then((credential: any) =>
         setAppState({ ...appState, jwt, credential, status: appStatus.DECODED }))
       .catch((err: Error) => setAppState({ ...initialState, message: err.message, status: appStatus.ERROR }))
@@ -33,7 +33,7 @@ function App () {
       <div className="container content">
         <div className="column column-6">
           <h2>Raw JWT</h2>
-          <UserInput status={appState.status} handleDecode={decode} />
+          <UserInput disabled={appState.status === appStatus.LOADING} handleDecode={decode} />
         </div>
         <div className="column column-6">
           <h2>Decoded</h2>

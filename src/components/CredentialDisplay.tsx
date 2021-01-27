@@ -22,7 +22,7 @@ const CredentialDisplay: React.FC<CredentialDisplayInterface> = ({ jwt }) => {
     error: null,
     credential: null
   }
-  
+
   const [localState, setLocalState] = useState<localStateInterface>(localStateInitState)
 
   const verify = async (ethSign: boolean) => {
