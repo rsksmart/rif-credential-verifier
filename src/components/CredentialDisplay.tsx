@@ -7,27 +7,28 @@ import LoadingComponent from './LoadingComponent'
 import { FormatDates, FormatMetaData } from './MetaDataHelpers'
 
 interface CredentialDisplayInterface {
-  jwt: string
+  jwt?: string
+  credential?: JWTVerified
 }
 
-const CredentialDisplay: React.FC<CredentialDisplayInterface> = ({ jwt }) => {
+const CredentialDisplay: React.FC<CredentialDisplayInterface> = ({ jwt, credential }) => {
   interface localStateInterface {
     ethSign: boolean;
     error: null | string;
-    credential: null | JWTVerified;
+    credential?: null | JWTVerified;
   }
 
   const localStateInitState = {
     ethSign: false,
     error: null,
-    credential: null
+    credential: credential
   }
 
   const [localState, setLocalState] = useState<localStateInterface>(localStateInitState)
 
   const verify = async (ethSign: boolean) => {
     await setLocalState({ ...localState, error: null })
-    verifyVerifiableJwt(jwt, ethSign)
+    jwt && verifyVerifiableJwt(jwt, ethSign)
       .then(async (credential: JWTVerified) => {
         await setLocalState({ ...localState, error: null, ethSign, credential })
       })
@@ -37,7 +38,7 @@ const CredentialDisplay: React.FC<CredentialDisplayInterface> = ({ jwt }) => {
   }
 
   useEffect(() => {
-    verify(localState.ethSign)
+    !credential && verify(localState.ethSign)
   }, [jwt])
 
   if (localState.error) {
@@ -58,15 +59,15 @@ const CredentialDisplay: React.FC<CredentialDisplayInterface> = ({ jwt }) => {
     return <LoadingComponent />
   }
 
-  const credential = localState.credential
+  const payload = localState.credential.payload
   const data = localState.credential.payload.vc.credentialSubject
 
   return (
     <div className="panel credential">
-      <h3>{credential.payload.vc.type?.join(': ')}</h3>
-      <FormatMetaData className="did" label="Issuer" value={credential.payload.iss} />
-      <FormatMetaData className="did" label="Subject" value={credential.payload.sub} />
-      <FormatDates payload={credential.payload} />
+      <h3>{payload.vc.type?.join(': ')}</h3>
+      <FormatMetaData className="did" label="Issuer" value={payload.iss} />
+      <FormatMetaData className="did" label="Subject" value={payload.sub} />
+      <FormatDates payload={payload} />
       <h4>CredentialSubject</h4>
       {data && (
         Object.keys(data).map((key: string) => (

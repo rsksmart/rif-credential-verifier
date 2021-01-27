@@ -3,12 +3,13 @@ import React, { useState } from 'react'
 interface UserInputInterface {
   disabled: boolean
   handleDecode: (jwt: string, useEthSign: boolean) => void
+  initialText?: string
 }
 
 const UserInput: React.FC<UserInputInterface> = ({
-  disabled, handleDecode
+  disabled, handleDecode, initialText
 }) => {
-  const [jwtInput, setJwtInput] = useState<string>('')
+  const [jwtInput, setJwtInput] = useState<string>(initialText || '')
   const [useEthSign, setUseEthSign] = useState<boolean>(true)
 
   const sharedProps = { disabled }
@@ -27,7 +28,7 @@ const UserInput: React.FC<UserInputInterface> = ({
       </label></p>
       <button
         {...sharedProps}
-        onClick={() => handleDecode(jwtInput, useEthSign)}
+        onClick={() => handleDecode(jwtInput.trim().replace(/\n/g, ' '), useEthSign)}
         className="submit"
       >Decode Presentation</button>
     </div>
