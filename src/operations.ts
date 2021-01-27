@@ -1,6 +1,6 @@
 import { Resolver } from 'did-resolver'
 import { getResolver } from 'ethr-did-resolver'
-import { verifyJWT } from 'jesse-did-jwt'
+import { verifyJWT, decodeJWT } from 'jesse-did-jwt'
 
 const providerConfig = {
   networks: [
@@ -14,4 +14,8 @@ const resolver = new Resolver(getResolver(providerConfig))
 export const verifyVerifiableJwt = (jwt: string) => {
   // @ts-expect-error: resolver is incorrect type from did-jwt
   return verifyJWT(jwt, { ethSign: true, resolver })
+}
+
+export const decode = (jwt: string) => {
+  return decodeJWT(jwt)
 }
