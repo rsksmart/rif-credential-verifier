@@ -7,21 +7,17 @@ interface PresentationDisplayInterface {
   presentation: JWTVerified
 }
 
-const PresentationDisplay: React.FC<PresentationDisplayInterface> = ({ presentation }) => {
-  console.log('presentation', presentation)
+const PresentationDisplay: React.FC<PresentationDisplayInterface> = ({ presentation }) => (
+  <div className="panel presentation">
+    <h3>{presentation.payload.vp.type?.join(': ')}</h3>
 
-  return (
-    <div className="panel presentation">
-      <h3>{presentation.payload.vp.type?.join(': ')}</h3>
+    <FormatMetaData className="did" label="Issuer" value={presentation.issuer} />
+    <FormatDates payload={presentation.payload} />
 
-      <FormatMetaData className="did" label="Issuer" value={presentation.issuer} />
-      <FormatDates payload={presentation.payload} />
-
-      {presentation.payload.vp.verifiableCredential.map((jwt: string) => (
-        <CredentialDisplay jwt={jwt} key={jwt} />
-      ))}
-    </div>
-  )
-}
+    {presentation.payload.vp.verifiableCredential.map((jwt: string) => (
+      <CredentialDisplay jwt={jwt} key={jwt} />
+    ))}
+  </div>
+)
 
 export default PresentationDisplay
