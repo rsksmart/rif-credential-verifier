@@ -30,7 +30,7 @@ const UserInput: React.FC<UserInputInterface> = ({
         {...sharedProps}
         onClick={() => handleDecode(jwtInput.trim().replace(/\n/g, ' '), useEthSign)}
         className="submit"
-      >Decode Presentation</button>
+      >Decode JWT</button>
     </div>
   )
 }

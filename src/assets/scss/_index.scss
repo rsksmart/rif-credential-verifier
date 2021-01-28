@@ -3,10 +3,19 @@ $blue-color: #61dafb;
 $white-color: #ffffff;
 $light-gray: #faf9f9;
 $gray: #919191;
+$red-color: #FF0000;
 
 body {
   font-family: 'Roboto', sans-serif;
   background-color: $light-gray;
+
+  h2, h3, h4, p {
+    color: $gray;
+  }
+
+  .alert, .container.alert p {
+    color: $red-color !important;
+  }
 
   .footer {
     text-align: center;
@@ -23,5 +32,5 @@ body {
 
 @import 'grid';
 @import 'userInputs';
-@import 'components/rawJwtDisplay';
 @import 'components/panel';
+@import 'components/loading';

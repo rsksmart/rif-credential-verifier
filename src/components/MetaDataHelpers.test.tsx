@@ -12,12 +12,12 @@ describe('Components: MetaDataHelpers', () => {
 
     it('shows an error when date is in the future', () => {
       const wrapper = mount(<FormatDateTimeItem value={7562950282} label="Date" validation="FUTURE" />)
-      expect(wrapper.find('.container').props().className).toBe('container datetime invalid')
+      expect(wrapper.find('.container').props().className).toBe('container datetime alert')
     })
 
     it('shows and error when date is in the past', () => {
       const wrapper = mount(<FormatDateTimeItem value={1562950282} label="Date" validation="PAST" />)
-      expect(wrapper.find('.container').props().className).toBe('container datetime invalid')
+      expect(wrapper.find('.container').props().className).toBe('container datetime alert')
     })
   })
 

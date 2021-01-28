@@ -20,7 +20,7 @@ export const FormatDateTimeItem:React.FC<FormatDateTimeI> = ({ label, value, val
 
   let className = 'datetime'
   if ((validation === 'PAST' && valueDate < new Date()) || (validation === 'FUTURE' && valueDate > new Date())) {
-    className += ' invalid'
+    className += ' alert'
   }
 
   return <FormatMetaData className={className} label={label} value={valueString} />
