@@ -1,7 +1,6 @@
 import { JWTVerified } from 'jesse-did-jwt'
 import React, { useState, useEffect } from 'react'
 import { INVALID_SIGNATURE } from '../constants'
-import { verifyVerifiableJwt } from '../operations'
 import ErrorComponent from './ErrorComponent'
 import LoadingComponent from './LoadingComponent'
 import { FormatDates, FormatMetaData } from './MetaDataHelpers'
@@ -9,9 +8,10 @@ import { FormatDates, FormatMetaData } from './MetaDataHelpers'
 interface CredentialDisplayInterface {
   jwt?: string
   credential?: JWTVerified
+  verifyVerifiableJwt: (jwt: string, ethSign: boolean) => Promise<JWTVerified>
 }
 
-const CredentialDisplay: React.FC<CredentialDisplayInterface> = ({ jwt, credential }) => {
+const CredentialDisplay: React.FC<CredentialDisplayInterface> = ({ jwt, credential, verifyVerifiableJwt }) => {
   interface localStateInterface {
     ethSign: boolean;
     error: null | string;
@@ -28,7 +28,7 @@ const CredentialDisplay: React.FC<CredentialDisplayInterface> = ({ jwt, credenti
 
   const verify = async (ethSign: boolean) => {
     await setLocalState({ ...localState, error: null })
-    jwt && verifyVerifiableJwt(jwt, ethSign)
+    verifyVerifiableJwt && jwt && verifyVerifiableJwt(jwt, ethSign)
       .then(async (credential: JWTVerified) => {
         await setLocalState({ ...localState, error: null, ethSign, credential })
       })

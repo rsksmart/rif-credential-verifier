@@ -5,9 +5,10 @@ import { FormatDates, FormatMetaData } from './MetaDataHelpers'
 
 interface PresentationDisplayInterface {
   presentation: JWTVerified
+  verifyVerifiableJwt: (jwt: string, ethSign: boolean) => Promise<JWTVerified>
 }
 
-const PresentationDisplay: React.FC<PresentationDisplayInterface> = ({ presentation }) => (
+const PresentationDisplay: React.FC<PresentationDisplayInterface> = ({ presentation, verifyVerifiableJwt }) => (
   <div className="panel presentation">
     <h3>{presentation.payload.vp.type?.join(': ')}</h3>
 
@@ -15,7 +16,7 @@ const PresentationDisplay: React.FC<PresentationDisplayInterface> = ({ presentat
     <FormatDates payload={presentation.payload} />
 
     {presentation.payload.vp.verifiableCredential.map((jwt: string) => (
-      <CredentialDisplay jwt={jwt} key={jwt} />
+      <CredentialDisplay jwt={jwt} key={jwt} verifyVerifiableJwt={verifyVerifiableJwt} />
     ))}
   </div>
 )
