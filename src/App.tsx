@@ -54,8 +54,10 @@ function App () {
         </div>
         <div className="column column-6">
           <h2>Decoded</h2>
-          {appState.credential && appState.credential.payload.vp && <PresentationDisplay presentation={appState.credential} />}
-          {appState.credential && appState.credential.payload.vc && <CredentialDisplay credential={appState.credential} />}
+          {appState.credential && appState.credential.payload.vp &&
+            <PresentationDisplay presentation={appState.credential} verifyVerifiableJwt={verifyVerifiableJwt} />}
+          {appState.credential && appState.credential.payload.vc &&
+            <CredentialDisplay credential={appState.credential} verifyVerifiableJwt={verifyVerifiableJwt} />}
           {appState.status === appStatus.ERROR && (
             <div className="panel">
               <ErrorComponent message={appState.message} />

@@ -1,7 +1,6 @@
 import { JWTVerified } from 'jesse-did-jwt'
 import React, { useState, useEffect } from 'react'
 import { INVALID_SIGNATURE } from '../constants'
-import { verifyVerifiableJwt } from '../operations'
 import ErrorComponent from './ErrorComponent'
 import LoadingComponent from './LoadingComponent'
 import { FormatDates, FormatMetaData } from './MetaDataHelpers'
@@ -9,58 +8,46 @@ import { FormatDates, FormatMetaData } from './MetaDataHelpers'
 interface CredentialDisplayInterface {
   jwt?: string
   credential?: JWTVerified
+  verifyVerifiableJwt: (jwt: string, ethSign: boolean) => any
 }
 
-const CredentialDisplay: React.FC<CredentialDisplayInterface> = ({ jwt, credential }) => {
-  interface localStateInterface {
-    ethSign: boolean;
-    error: null | string;
-    credential?: null | JWTVerified;
-  }
+const CredentialDisplay: React.FC<CredentialDisplayInterface> = ({ jwt, credential, verifyVerifiableJwt }) => {
+  const [ethSign, setEthSign] = useState<boolean>(false)
+  const [error, setError] = useState<string | null>(null)
+  const [decodedCredential, setDecodedCredential] = useState<JWTVerified | null>(null)
 
-  const localStateInitState = {
-    ethSign: false,
-    error: null,
-    credential: credential
-  }
-
-  const [localState, setLocalState] = useState<localStateInterface>(localStateInitState)
-
-  const verify = async (ethSign: boolean) => {
-    await setLocalState({ ...localState, error: null })
-    jwt && verifyVerifiableJwt(jwt, ethSign)
-      .then(async (credential: JWTVerified) => {
-        await setLocalState({ ...localState, error: null, ethSign, credential })
-      })
-      .catch(async (err: Error) => {
-        await setLocalState({ ...localState, ethSign, error: err.message })
-      })
+  const verify = (useEthSign: boolean) => {
+    setError(null)
+    setEthSign(useEthSign)
+    verifyVerifiableJwt && jwt && verifyVerifiableJwt(jwt, useEthSign)
+      .then((response: JWTVerified) => setDecodedCredential(response))
+      .catch((err: Error) => setError(err.message))
   }
 
   useEffect(() => {
-    !credential && verify(localState.ethSign)
+    !credential ? verify(ethSign) : setDecodedCredential(credential)
   }, [jwt])
 
-  if (localState.error) {
+  if (error) {
     return (
-      <div className="panel credential">
+      <div className="panel error">
         <h3>VerifiableCredential</h3>
-        <ErrorComponent message={localState.error} />
-        {(localState.error === INVALID_SIGNATURE) && (
-          <button onClick={() => { console.log('click again'); verify(!localState.ethSign) }}>
-            Try again <strong>{localState.ethSign ? 'without' : 'with'}</strong> eth sign.
+        <ErrorComponent message={error} />
+        {(error === INVALID_SIGNATURE) && (
+          <button onClick={() => { verify(!ethSign) }}>
+            Try again <strong>{ethSign ? 'without' : 'with'}</strong> eth sign.
           </button>
         )}
       </div>
     )
   }
 
-  if (!localState.credential) {
+  if (!decodedCredential) {
     return <LoadingComponent />
   }
 
-  const payload = localState.credential.payload
-  const data = localState.credential.payload.vc.credentialSubject
+  const payload = decodedCredential.payload
+  const data = decodedCredential.payload.vc.credentialSubject
 
   return (
     <div className="panel credential">
