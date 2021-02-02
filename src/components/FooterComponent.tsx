@@ -1,7 +1,6 @@
 import React from 'react'
 import poweredByRif from '../assets/images/powered-by-iov.svg'
 import { version } from '../../package.json'
-import { link } from 'fs'
 
 const FooterComponent: React.FC = () => {
   const linkProps = {
