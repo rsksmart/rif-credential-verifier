@@ -56,7 +56,7 @@ function App () {
           {appState.credential && appState.credential.payload.vp &&
             <PresentationDisplay presentation={appState.credential} verifyVerifiableJwt={verifyVerifiableJwt} />}
           {appState.credential && appState.credential.payload.vc &&
-            <CredentialDisplay credential={appState.credential} verifyVerifiableJwt={verifyVerifiableJwt} />}
+            <CredentialDisplay credential={appState.credential} verifyVerifiableJwt={verifyVerifiableJwt} jwt={appState.jwt} />}
           {appState.status === appStatus.ERROR && (
             <div className="panel">
               <ErrorComponent message={appState.message} />
