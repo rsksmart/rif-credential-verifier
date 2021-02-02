@@ -5,6 +5,7 @@ import ErrorComponent from './ErrorComponent'
 import LoadingComponent from './LoadingComponent'
 import { FormatDates, FormatMetaData } from './MetaDataHelpers'
 import ShowRawComponent from './ShowRawComponent'
+import SchemaParserComponent from './SchemaParserComponent'
 
 interface CredentialDisplayInterface {
   jwt?: string
@@ -49,7 +50,6 @@ const CredentialDisplay: React.FC<CredentialDisplayInterface> = ({ jwt, credenti
   }
 
   const payload = decodedCredential.payload
-  const data = decodedCredential.payload.vc.credentialSubject
 
   return (
     <div className="panel credential">
@@ -67,12 +67,8 @@ const CredentialDisplay: React.FC<CredentialDisplayInterface> = ({ jwt, credenti
       <FormatMetaData className="did" label="Issuer" value={payload.iss} />
       <FormatMetaData className="did" label="Subject" value={payload.sub} />
       <FormatDates payload={payload} />
-      <h4>CredentialSubject</h4>
-      {data && (
-        Object.keys(data).map((key: string) => (
-          <FormatMetaData value={data[key]} label={key} key={key} />
-        ))
-      )}
+
+      <SchemaParserComponent payload={decodedCredential.payload} />
     </div>
   )
 }

@@ -18,6 +18,7 @@
     "did-resolver": "^2.1.2",
     "ethr-did-resolver": "^3.0.3",
     "jesse-did-jwt": "^4.6.2",
+    "jesse-vc-json-schemas-parser": "^1.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",

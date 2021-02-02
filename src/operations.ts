@@ -1,6 +1,7 @@
 import { Resolver } from 'did-resolver'
 import { getResolver } from 'ethr-did-resolver'
-import { verifyJWT, decodeJWT } from 'jesse-did-jwt'
+import { verifyJWT, decodeJWT, JWTPayload } from 'jesse-did-jwt'
+import { parseVerifiableCredential } from 'jesse-vc-json-schemas-parser'
 
 const providerConfig = {
   networks: [
@@ -19,4 +20,8 @@ export const verifyVerifiableJwt = (jwt: string, ethSign: boolean) => {
 
 export const decode = (jwt: string) => {
   return decodeJWT(jwt)
+}
+
+export const parseCredential = (type: string, payload: JWTPayload) => {
+  return parseVerifiableCredential(type, payload)
 }
