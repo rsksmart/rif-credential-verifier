@@ -20,6 +20,18 @@ button {
   cursor: pointer;
 }
 
+button:focus {
+  outline:0;
+}
+
+button.link {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  font-size: 14px;
+}
+
 label {
   cursor: pointer;
   color: $black-color;

@@ -4,6 +4,7 @@ import { INVALID_SIGNATURE } from '../constants'
 import ErrorComponent from './ErrorComponent'
 import LoadingComponent from './LoadingComponent'
 import { FormatDates, FormatMetaData } from './MetaDataHelpers'
+import ShowRawComponent from './ShowRawComponent'
 
 interface CredentialDisplayInterface {
   jwt?: string
@@ -15,6 +16,7 @@ const CredentialDisplay: React.FC<CredentialDisplayInterface> = ({ jwt, credenti
   const [ethSign, setEthSign] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
   const [decodedCredential, setDecodedCredential] = useState<JWTVerified | null>(null)
+  const [showRaw, setShowRaw] = useState<boolean>(false)
 
   const verify = (useEthSign: boolean) => {
     setError(null)
@@ -51,7 +53,17 @@ const CredentialDisplay: React.FC<CredentialDisplayInterface> = ({ jwt, credenti
 
   return (
     <div className="panel credential">
-      <h3>{payload.vc.type?.join(': ')}</h3>
+      <div className="container">
+        <div className="column">
+          <h3>{payload.vc.type?.join(': ')}</h3>
+        </div>
+        <div className="column">
+          <button className="raw link" onClick={() => setShowRaw(!showRaw)}>
+            {showRaw ? 'Hide' : 'Show'} Raw
+          </button>
+        </div>
+      </div>
+      {showRaw && jwt && <ShowRawComponent jwt={jwt} />}
       <FormatMetaData className="did" label="Issuer" value={payload.iss} />
       <FormatMetaData className="did" label="Subject" value={payload.sub} />
       <FormatDates payload={payload} />
