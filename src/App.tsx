@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import rifCredentialViewerLogo from './assets/images/rif-credential-viewer.svg'
-import poweredByRif from './assets/images/powered-by-iov.svg'
 import './assets/scss/_index.scss'
-import { version } from '../package.json'
 import { appStatus, appStateInterface, initialState } from './state'
 import UserInput from './components/UserInput'
 import ErrorComponent from './components/ErrorComponent'
@@ -12,6 +10,7 @@ import PresentationDisplay from './components/PresentationDisplay'
 import { INVALID_SIGNATURE } from './constants'
 import CredentialDisplay from './components/CredentialDisplay'
 import { JWTVerified } from 'jesse-did-jwt'
+import FooterComponent from './components/FooterComponent'
 
 function App () {
   const [appState, setAppState] = useState<appStateInterface>(initialState)
@@ -67,13 +66,7 @@ function App () {
         </div>
       </div>
 
-      <div className="container footer">
-        <div className="column">
-          <img src={poweredByRif} alt="Powered By RIF" />
-          <p>Copyright &copy; 2021 IOV Labs. All rights reserved.</p>
-          <p>Version {version}</p>
-        </div>
-      </div>
+      <FooterComponent />
     </div>
   )
 }

@@ -17,16 +17,6 @@ body {
     color: $red-color !important;
   }
 
-  .footer {
-    text-align: center;
-
-    p {
-      margin: 2px 0;
-      font-size: 12px;
-      color: $gray;
-    }
-  }
-
   .breakAll { word-wrap: break-word;}
 }
 
@@ -34,3 +24,4 @@ body {
 @import 'userInputs';
 @import 'components/panel';
 @import 'components/loading';
+@import 'components/footer';
