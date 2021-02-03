@@ -1,7 +1,6 @@
 import { Resolver } from 'did-resolver'
 import { getResolver } from 'ethr-did-resolver'
-import { decodeJWT } from 'did-jwt'
-import { verifyJWT } from 'jesse-did-jwt'
+import { verifyJWT, decodeJWT } from 'jesse-did-jwt'
 
 const providerConfig = {
   networks: [
