@@ -1,7 +1,7 @@
 import { Resolver } from 'did-resolver'
 import { getResolver } from 'ethr-did-resolver'
 import { verifyJWT, decodeJWT, JWTPayload } from 'jesse-did-jwt'
-import { parseVerifiableCredential } from 'jesse-vc-json-schemas-parser'
+import { parseVerifiableCredential } from '@rsksmart/vc-json-schemas-parser'
 
 const providerConfig = {
   networks: [
