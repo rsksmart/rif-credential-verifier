@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/rif-credential-verifier/static/css/main.1b11653f.chunk.css",
-    "main.js": "/rif-credential-verifier/static/js/main.8b148155.chunk.js",
-    "main.js.map": "/rif-credential-verifier/static/js/main.8b148155.chunk.js.map",
-    "runtime-main.js": "/rif-credential-verifier/static/js/runtime-main.c84cc1fd.js",
-    "runtime-main.js.map": "/rif-credential-verifier/static/js/runtime-main.c84cc1fd.js.map",
-    "static/js/2.87eaae26.chunk.js": "/rif-credential-verifier/static/js/2.87eaae26.chunk.js",
-    "static/js/2.87eaae26.chunk.js.map": "/rif-credential-verifier/static/js/2.87eaae26.chunk.js.map",
-    "static/js/3.157b170b.chunk.js": "/rif-credential-verifier/static/js/3.157b170b.chunk.js",
-    "static/js/3.157b170b.chunk.js.map": "/rif-credential-verifier/static/js/3.157b170b.chunk.js.map",
-    "index.html": "/rif-credential-verifier/index.html",
-    "static/css/main.1b11653f.chunk.css.map": "/rif-credential-verifier/static/css/main.1b11653f.chunk.css.map",
-    "static/js/2.87eaae26.chunk.js.LICENSE.txt": "/rif-credential-verifier/static/js/2.87eaae26.chunk.js.LICENSE.txt",
-    "static/media/powered-by-iov.5db81567.svg": "/rif-credential-verifier/static/media/powered-by-iov.5db81567.svg",
-    "static/media/rif-credential-viewer.5cd41cae.svg": "/rif-credential-verifier/static/media/rif-credential-viewer.5cd41cae.svg"
+    "main.css": "./static/css/main.1b11653f.chunk.css",
+    "main.js": "./static/js/main.8f65ae43.chunk.js",
+    "main.js.map": "./static/js/main.8f65ae43.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.5edc29ea.js",
+    "runtime-main.js.map": "./static/js/runtime-main.5edc29ea.js.map",
+    "static/js/2.87eaae26.chunk.js": "./static/js/2.87eaae26.chunk.js",
+    "static/js/2.87eaae26.chunk.js.map": "./static/js/2.87eaae26.chunk.js.map",
+    "static/js/3.157b170b.chunk.js": "./static/js/3.157b170b.chunk.js",
+    "static/js/3.157b170b.chunk.js.map": "./static/js/3.157b170b.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/main.1b11653f.chunk.css.map": "./static/css/main.1b11653f.chunk.css.map",
+    "static/js/2.87eaae26.chunk.js.LICENSE.txt": "./static/js/2.87eaae26.chunk.js.LICENSE.txt",
+    "static/media/powered-by-iov.5db81567.svg": "./static/media/powered-by-iov.5db81567.svg",
+    "static/media/rif-credential-viewer.5cd41cae.svg": "./static/media/rif-credential-viewer.5cd41cae.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.c84cc1fd.js",
+    "static/js/runtime-main.5edc29ea.js",
     "static/js/2.87eaae26.chunk.js",
     "static/css/main.1b11653f.chunk.css",
-    "static/js/main.8b148155.chunk.js"
+    "static/js/main.8f65ae43.chunk.js"
   ]
 }
