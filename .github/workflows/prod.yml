@@ -1,10 +1,9 @@
 name: RIF Credential Verifier deploy to prod
 
 on:
-  pull_request:
+  push:
     branches:
-      - 'develop'
-    types: [closed]
+      - 'main'
 
 jobs:
   develop_build_and_deploy:
