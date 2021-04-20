@@ -16,12 +16,4 @@ describe('App test', () => {
       expect(image.props().src).toBe('rif-credential-viewer.svg')
     })
   })
-
-  describe('footer', () => {
-    it('has copyright info and image', () => {
-      const wrapper = shallow(<App />)
-      expect(wrapper.find('.footer').find('img').props().alt).toBe('Powered By RIF')
-      expect(wrapper.find('.footer').find('p').at(0).text()).toBe('Copyright © 2021 IOV Labs. All rights reserved.')
-    })
-  })
 })

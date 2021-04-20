@@ -1,0 +1,33 @@
+.panel {
+  padding: 10px;
+  border: 2px solid $blue-color;
+  border-radius: 10px;
+
+  h3 {
+    margin-top: 0;
+  }
+
+  p {
+    margin: 5px 0;
+  }
+
+  .container {
+    border-bottom: 1px solid #f1f1f1;
+  }
+
+  div.label {
+    font-weight: 500 !important;
+  }
+
+  div.value p {
+    color: $black-color;
+  }
+
+  .panel {
+    margin-top: 25px;
+  }
+  
+  .did {
+    word-wrap: break-word;
+  }
+}

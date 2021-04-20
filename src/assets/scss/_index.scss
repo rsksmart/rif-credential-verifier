@@ -3,20 +3,26 @@ $blue-color: #61dafb;
 $white-color: #ffffff;
 $light-gray: #faf9f9;
 $gray: #919191;
+$red-color: #FF0000;
 
 body {
   font-family: 'Roboto', sans-serif;
   background-color: $light-gray;
 
-  .footer {
-    text-align: center;
-
-    p {
-      margin: 2px 0;
-      font-size: 12px;
-      color: $gray;
-    }
+  h2, h3, h4, p {
+    color: $gray;
   }
+
+  .alert, .container.alert p {
+    color: $red-color !important;
+  }
+
+  .breakAll { word-wrap: break-word;}
 }
 
 @import 'grid';
+@import 'userInputs';
+@import 'components/panel';
+@import 'components/loading';
+@import 'components/footer';
+@import 'components/showRaw';

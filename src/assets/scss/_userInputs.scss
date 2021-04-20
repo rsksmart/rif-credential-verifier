@@ -1,0 +1,38 @@
+textarea, .textarea {
+  width: 100%;
+  min-height: 350px;
+  border: 1px solid $gray;
+  border-radius: 5px;
+  background-color: $white-color;
+  border-width: 2px;
+  border-color: $blue-color;
+  padding: 10px;
+  word-break: break-all;
+}
+
+button {
+  margin: 10px 0;
+  border-radius: 5px;
+  padding: 10px 50px;
+  font-size: 18px;
+  border: none;
+  box-shadow: 0px 4px 10px $light-gray;
+  cursor: pointer;
+}
+
+button:focus {
+  outline:0;
+}
+
+button.link {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  font-size: 14px;
+}
+
+label {
+  cursor: pointer;
+  color: $black-color;
+}
