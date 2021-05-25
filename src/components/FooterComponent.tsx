@@ -18,8 +18,8 @@ const FooterComponent: React.FC = () => {
       <div className="column-4">
         <h2>RIF Identity Products</h2>
         <ul>
-          <li><a href="https://rsksmart.github.io/rif-identity-manager/" {...linkProps}>RIF Identity Manager</a></li>
-          <li><a href="https://rsksmart.github.io/email-vc-issuer/" {...linkProps}>Email Verifiable Credential Issuer</a></li>
+          <li><a href="https://identity.rifos.org/" {...linkProps}>RIF Identity Manager</a></li>
+          <li><a href="https://email-verifier.identity.rifos.org/" {...linkProps}>Email Verifiable Credential Issuer</a></li>
           <li><a href="https://developers.rsk.co/rif/identity/" {...linkProps}>RIF Identity Documentation</a></li>
         </ul>
       </div>
